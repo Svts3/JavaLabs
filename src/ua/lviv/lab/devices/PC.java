@@ -1,7 +1,5 @@
 package ua.lviv.lab.devices;
 
-import ua.lviv.lab.enums.Type;
-
 public class PC extends Device{
     
     private String cpu;
@@ -9,9 +7,9 @@ public class PC extends Device{
     private int ram;
     private int memoryInGb;
     public PC(String brand,String model,int priceInUsd,
-	    double weigth,String cpu,
+	    double weightInKg,String cpu,
 	    String gpu,int ram,int memoryInGb) {
-	super(brand,model,priceInUsd,weigth);
+	super(brand,model,priceInUsd,weightInKg);
 	super.setTypeOfDevice(Type.PC);
 	this.cpu = cpu;
 	this.gpu = gpu;

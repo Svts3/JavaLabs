@@ -1,7 +1,5 @@
 package ua.lviv.lab.devices;
 
-import ua.lviv.lab.enums.Type;
-
 public class Smartphone extends Device {
     private String cpu;
     private String videoCore;
@@ -12,10 +10,10 @@ public class Smartphone extends Device {
     private int numberOfFrontCameras;
 
     public Smartphone(String brand, String model, int priceInUah,
-	    double weigthInKg, String cpu, String videoCore,
+	    double weightInKg, String cpu, String videoCore,
 	    int ram, int memory, double screenDiagonal,
 	    int batteryCapacityInMa, int numberOfFrontCameras) {
-	super(brand, model, priceInUah, weigthInKg);
+	super(brand, model, priceInUah, weightInKg);
 	super.setTypeOfDevice(Type.SMARTPHONE);
 	this.cpu = cpu;
 	this.videoCore = videoCore;
@@ -31,7 +29,7 @@ public class Smartphone extends Device {
 	return super.toString() + String.format(
 		"CPU: %s, video core: %s\n" + "Ram: %d, memory: %d Gb\n"
 		+ "Screen diagonal: %.1f\", number of front cameras: %d\n"
-		+ "Battery capacity: %d Ma",
+		+ "Battery capacity: %d Ma\n",
 		cpu, videoCore, ram, memory,
 		screenDiagonal, numberOfFrontCameras, batteryCapacityInMa);
     }

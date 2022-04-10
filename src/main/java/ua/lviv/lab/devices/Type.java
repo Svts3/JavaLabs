@@ -1,4 +1,4 @@
-package ua.lviv.lab.enums;
+package ua.lviv.lab.devices;
 
 public enum Type{
     LAPTOP,PC,PRINTER,SMARTPHONE,CALCULATOR

@@ -32,7 +32,7 @@ public class Main {
 	store.addDevice(pc);
 
 	List<Device> devices = store.findDevicesByTypeInRange(Type.LAPTOP, 0, 2300);
-
+	
 	devices = store.sortFoundedDevicesByPrice(false);
 	devices = store.sortFoundedDevicesByPrice(true);
 	devices = store.sortFoundedDevicesByWeigth(false);

@@ -30,10 +30,13 @@ public class OfficeEquipmentStore {
     public List<Device> findDevicesByTypeInRange(Type type, int minPrice, int maxPrice)
 	    throws Exception {
 	if (minPrice > maxPrice)
-	    throw new Exception("Error! Minimal price is bigger than maximal price.");
+	    throw new IllegalArgumentException("Error! Minimal price is bigger than maximal price.");
+	if(type==null)
+	    throw new IllegalArgumentException("Error! The type is null");
 	foundedDevices = devices.stream().filter(device -> device.getTypeOfDevice().equals(type))
 		.filter(device -> device.getPriceInUsd() >= minPrice)
-		.filter(device -> device.getPriceInUsd() <= maxPrice).collect(Collectors.toList());
+		.filter(device -> device.getPriceInUsd() <= maxPrice)
+		.collect(Collectors.toList());
 	System.out.println("Founded devices:\n");
 	for (Device device : foundedDevices) {
 	    System.out.println(device);

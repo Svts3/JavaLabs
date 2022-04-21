@@ -45,6 +45,8 @@ class TestOfficeEquipmentStore {
 	assertEquals("212", officeEquipmentStore.getDevices().get(0).getModel());
 	assertEquals("Legion", officeEquipmentStore.getDevices().get(1).getModel());
 	assertEquals("Lenovo", officeEquipmentStore.getDevices().get(1).getBrand());
+	OfficeEquipmentStore officeEquipmentStore2 = new OfficeEquipmentStore(new ArrayList<Device>());
+	assertEquals(0, officeEquipmentStore2.getDevices().size());
 
     }
 
@@ -72,7 +74,10 @@ class TestOfficeEquipmentStore {
 		.get(2).getBrand());
 	assertEquals("Asus", testOfficeEquipmentStore.findDevicesByTypeInRange(Type.PC, 1500, 1500)
 		.get(0).getBrand());
-	assertThrows(Exception.class, () -> {
+	assertThrows(IllegalArgumentException.class, ()->{
+	    testOfficeEquipmentStore.findDevicesByTypeInRange(null, 0, 0);
+	});
+	assertThrows(IllegalArgumentException.class, () -> {
 	    testOfficeEquipmentStore.findDevicesByTypeInRange(Type.PC, 3000, 0);
 	});
     }

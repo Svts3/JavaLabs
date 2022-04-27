@@ -15,7 +15,6 @@ class TestPrinter {
 	assertEquals(true, printer.toString().contains("number of colors: 4"));
 	assertEquals(true, printer.toString().contains("weight: 2,3"));
 	assertEquals(true, printer.toString().contains("Price: 300"));
-	
 
     }
 

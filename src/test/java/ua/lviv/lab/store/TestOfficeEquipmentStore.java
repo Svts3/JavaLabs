@@ -20,14 +20,14 @@ class TestOfficeEquipmentStore {
     @BeforeEach
     public void addDevices() {
 	this.testOfficeEquipmentStore = new OfficeEquipmentStore();
-	testOfficeEquipmentStore.addDevice(new Laptop("HP", "Omen", 1400, 2.4, "R5 5600",
-					"Rtx 3050", 16, 512, 72, 17));
-	testOfficeEquipmentStore.addDevice(new Laptop("Asus", "VivoBook", 1700, 3, "R5 5600",
-					"Rtx 3050", 16, 512, 72, 17));
-	testOfficeEquipmentStore.addDevice(new Laptop("Dell", "XPS", 1650, 2.7, "R5 5600",
-					"Rtx 3050", 16, 512, 72, 17));
-	testOfficeEquipmentStore.addDevice(new PC("Asus", "S-500", 1500, 3.4, "R5 5600x",
-					"RTX 3060", 16, 1000));
+	testOfficeEquipmentStore.addDevice(
+		new Laptop("HP", "Omen", 1400, 2.4, "R5 5600", "Rtx 3050", 16, 512, 72, 17));
+	testOfficeEquipmentStore.addDevice(
+		new Laptop("Asus", "VivoBook", 1700, 3, "R5 5600", "Rtx 3050", 16, 512, 72, 17));
+	testOfficeEquipmentStore.addDevice(
+		new Laptop("Dell", "XPS", 1650, 2.7, "R5 5600", "Rtx 3050", 16, 512, 72, 17));
+	testOfficeEquipmentStore
+		.addDevice(new PC("Asus", "S-500", 1500, 3.4, "R5 5600x", "RTX 3060", 16, 1000));
 
     }
 
@@ -35,7 +35,7 @@ class TestOfficeEquipmentStore {
     void testConstructorThatGetsList() {
 	Calculator calculator = new Calculator("Casio", "212", 5, 0.5, 12);
 	Laptop laptop = new Laptop("Lenovo", "Legion", 1400, 2.4, "R5 5600", "Rtx 3050", 16, 512,
-				72, 17);
+		72, 17);
 	List<Device> tempList = new ArrayList<>();
 	tempList.add(calculator);
 	tempList.add(laptop);
@@ -45,7 +45,8 @@ class TestOfficeEquipmentStore {
 	assertEquals("212", officeEquipmentStore.getDevices().get(0).getModel());
 	assertEquals("Legion", officeEquipmentStore.getDevices().get(1).getModel());
 	assertEquals("Lenovo", officeEquipmentStore.getDevices().get(1).getBrand());
-	OfficeEquipmentStore officeEquipmentStore2 = new OfficeEquipmentStore(new ArrayList<Device>());
+	OfficeEquipmentStore officeEquipmentStore2 = new OfficeEquipmentStore(
+		new ArrayList<Device>());
 	assertEquals(0, officeEquipmentStore2.getDevices().size());
 
     }
@@ -55,7 +56,7 @@ class TestOfficeEquipmentStore {
 	assertEquals(4, testOfficeEquipmentStore.getDevices().size());
 	testOfficeEquipmentStore.addDevice(new Calculator("Casio", "212", 5, 0.5, 12));
 	testOfficeEquipmentStore.addDevice(new Laptop("Lenovo", "Legion", 1400, 2.4, "R5 5600",
-		"Rtx 3050", 16, 512, 72, 17));
+					"Rtx 3050", 16, 512, 72, 17));
 
 	assertEquals(6, testOfficeEquipmentStore.getDevices().size());
 	assertEquals("Omen", testOfficeEquipmentStore.getDevices().get(0).getModel());
@@ -74,7 +75,7 @@ class TestOfficeEquipmentStore {
 		.get(2).getBrand());
 	assertEquals("Asus", testOfficeEquipmentStore.findDevicesByTypeInRange(Type.PC, 1500, 1500)
 		.get(0).getBrand());
-	assertThrows(IllegalArgumentException.class, ()->{
+	assertThrows(IllegalArgumentException.class, () -> {
 	    testOfficeEquipmentStore.findDevicesByTypeInRange(null, 0, 0);
 	});
 	assertThrows(IllegalArgumentException.class, () -> {
@@ -97,11 +98,10 @@ class TestOfficeEquipmentStore {
 	assertEquals(1650, tempList.get(1).getPriceInUsd());
 	assertEquals(1700, tempList.get(2).getPriceInUsd());
 
-
     }
 
     @Test
-    void testSortFoundedDevicesByPriceDESC() throws Exception{
+    void testSortFoundedDevicesByPriceDESC() throws Exception {
 
 	List<Device> tempList = testOfficeEquipmentStore.findDevicesByTypeInRange(Type.LAPTOP, 0,
 		1700);
@@ -117,10 +117,10 @@ class TestOfficeEquipmentStore {
     }
 
     @Test
-    void testSortFoundedDevicesByWeightASC() throws Exception{
+    void testSortFoundedDevicesByWeightASC() throws Exception {
 
 	List<Device> tempList = testOfficeEquipmentStore.findDevicesByTypeInRange(Type.LAPTOP, 0,
-										1700);
+		1700);
 	tempList = testOfficeEquipmentStore.sortFoundedDevicesByWeigth(false);
 	assertEquals(3, tempList.size());
 	assertEquals("HP", tempList.get(0).getBrand());
@@ -131,15 +131,13 @@ class TestOfficeEquipmentStore {
 	assertEquals(2.7, tempList.get(1).getWeightInKg());
 	assertEquals(3, tempList.get(2).getWeightInKg());
 
-
-
     }
 
     @Test
     void testSortFoundedDevicesByWeightDESC() throws Exception {
 
 	List<Device> tempList = testOfficeEquipmentStore.findDevicesByTypeInRange(Type.LAPTOP, 0,
-										1700);
+		1700);
 	tempList = testOfficeEquipmentStore.sortFoundedDevicesByWeigth(true);
 	assertEquals(3, tempList.size());
 	assertEquals("Asus", tempList.get(0).getBrand());
@@ -149,8 +147,6 @@ class TestOfficeEquipmentStore {
 	assertEquals(3, tempList.get(0).getWeightInKg());
 	assertEquals(2.7, tempList.get(1).getWeightInKg());
 	assertEquals(2.4, tempList.get(2).getWeightInKg());
-
-
 
     }
 

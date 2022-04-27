@@ -8,7 +8,8 @@ public abstract class Device {
     private double weightInKg;
     public Type typeOfDevice;
 
-    public Device(String brand, String model, int priceInUsd, double weightInKg) {
+    public Device(final String brand, final String model, final int priceInUsd,
+	    	final double weightInKg) {
 
 	this.brand = brand;
 	this.model = model;
@@ -45,6 +46,16 @@ public abstract class Device {
 
     public double getWeightInKg() {
 	return weightInKg;
+    }
+
+    public String getHeaders() {
+	return "Brand;Model;Price;Weight;Type;";
+    }
+
+    public String toCSV() {
+
+	return String.format("%s;%s;%d;%.1f;%s;", this.brand, this.model, this.priceInUsd,
+		this.weightInKg, this.typeOfDevice.name());
     }
 
 }

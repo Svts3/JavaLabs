@@ -11,7 +11,7 @@ class TestPC {
 	PC pc = new PC("Asus", "S-500", 1500, 3.4, "R5 5600x", "RTX 3060", 16, 1000);
 	assertEquals(true, pc.toString().contains("Brand: Asus"));
 	assertEquals(true, pc.toString().contains("model: S-500"));
-	assertEquals(true, pc.toString().contains("weight: 3,4"));	
+	assertEquals(true, pc.toString().contains("weight: 3,4"));
 	assertEquals(true, pc.toString().contains("CPU: R5 5600x"));
 	assertEquals(true, pc.toString().contains("GPU: RTX 3060"));
 	assertEquals(true, pc.toString().contains("RAM: 16"));

@@ -9,9 +9,10 @@ public class Smartphone extends Device {
     private int batteryCapacityInMa;
     private int numberOfFrontCameras;
 
-    public Smartphone(String brand, String model, int priceInUah, double weightInKg, String cpu,
-	    	String videoCore, int ram, int memory, double screenDiagonal, int batteryCapacityInMa,
-	    	int numberOfFrontCameras) {
+    public Smartphone(final String brand, final String model, final int priceInUah,
+	    	final double weightInKg, String cpu, final String videoCore, final int ram,
+	    	final int memory, final double screenDiagonal, final int batteryCapacityInMa,
+	    	final int numberOfFrontCameras) {
 	super(brand, model, priceInUah, weightInKg);
 	super.setTypeOfDevice(Type.SMARTPHONE);
 	this.cpu = cpu;
@@ -31,6 +32,17 @@ public class Smartphone extends Device {
 			+ "Battery capacity: %d Ma\n",
 		cpu, videoCore, ram, memory, screenDiagonal, numberOfFrontCameras,
 		batteryCapacityInMa);
+    }
+
+    public String getHeaders() {
+	return super.getHeaders() + "CPU;Video core;RAM;Memory;Battery Capacity;Screen Diagonal;"
+				+ "Number of Front Cameras;";
+    }
+
+    public String toCSV() {
+	return super.toCSV() + String.format("%s;%s;%d;%d;%d;%.1f;%d", this.cpu, this.videoCore,
+                        		this.ram, this.memory, this.batteryCapacityInMa,
+                        		this.screenDiagonal, this.numberOfFrontCameras);
     }
 
 }

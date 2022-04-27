@@ -14,7 +14,7 @@ class TestCalculator {
 	assertEquals(true, calculator.toString().contains("Dimension: 12"));
 	assertEquals(true, calculator.toString().contains("weight: 0,5"));
 	assertEquals(true, calculator.toString().contains("Price: 20"));
-	
+
     }
 
 }

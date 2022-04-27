@@ -5,7 +5,9 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import ua.lviv.lab.devices.*;
+import ua.lviv.lab.devices.Device;
+import ua.lviv.lab.devices.Type;
+
 
 public class OfficeEquipmentStore {
 
@@ -27,12 +29,15 @@ public class OfficeEquipmentStore {
 	return devices;
     }
 
-    public List<Device> findDevicesByTypeInRange(Type type, int minPrice, int maxPrice)
+    public List<Device> findDevicesByTypeInRange(final Type type, final int minPrice,
+	    					final int maxPrice)
 	    throws Exception {
-	if (minPrice > maxPrice)
-	    throw new IllegalArgumentException("Error! Minimal price is bigger than maximal price.");
-	if(type==null)
+	if (minPrice > maxPrice) {
+	    throw new IllegalArgumentException("Error! Minimal price is bigger than maximal price");
+	}
+	if (type == null) {
 	    throw new IllegalArgumentException("Error! The type is null");
+	}
 	foundedDevices = devices.stream().filter(device -> device.getTypeOfDevice().equals(type))
 		.filter(device -> device.getPriceInUsd() >= minPrice)
 		.filter(device -> device.getPriceInUsd() <= maxPrice)
@@ -45,7 +50,7 @@ public class OfficeEquipmentStore {
 	return foundedDevices;
     }
 
-    public List<Device> sortFoundedDevicesByPrice(boolean reversed){
+    public List<Device> sortFoundedDevicesByPrice(final boolean reversed) {
 	if (reversed) {
 	    foundedDevices = foundedDevices.stream()
 		    .sorted(Comparator.comparing(Device::getPriceInUsd).reversed())
@@ -64,7 +69,7 @@ public class OfficeEquipmentStore {
 	return foundedDevices;
     }
 
-    public List<Device> sortFoundedDevicesByWeigth(boolean reversed) {
+    public List<Device> sortFoundedDevicesByWeigth(final boolean reversed) {
 	if (reversed) {
 	    foundedDevices = foundedDevices.stream()
 		    .sorted(Comparator.comparing(Device::getWeightInKg).reversed())

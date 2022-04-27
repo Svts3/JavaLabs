@@ -2,7 +2,11 @@ package ua.lviv.lab;
 
 import java.util.List;
 
-import ua.lviv.lab.devices.*;
+import ua.lviv.lab.devices.Device;
+import ua.lviv.lab.devices.Laptop;
+import ua.lviv.lab.devices.PC;
+import ua.lviv.lab.devices.Smartphone;
+import ua.lviv.lab.devices.Type;
 import ua.lviv.lab.store.OfficeEquipmentStore;
 
 public class Main {
@@ -19,7 +23,7 @@ public class Main {
 		72, 15);
 
 	Device smartphone = new Smartphone("Apple", "Iphone 13", 1700, 0.7, "A15 Bionic",
-		"A15 Bionic", 8, 512, 8.6, 4000, 3);
+					"A15 Bionic", 8, 512, 8.6, 4000, 3);
 	Device pc = new PC("Lenovo", "Tower", 2100, 5.7, "R5 5600x", "RTX 3060", 16, 1000);
 
 	OfficeEquipmentStore store = new OfficeEquipmentStore();
@@ -32,7 +36,7 @@ public class Main {
 	store.addDevice(pc);
 
 	List<Device> devices = store.findDevicesByTypeInRange(Type.LAPTOP, 0, 2300);
-	
+
 	devices = store.sortFoundedDevicesByPrice(false);
 	devices = store.sortFoundedDevicesByPrice(true);
 	devices = store.sortFoundedDevicesByWeigth(false);

@@ -6,7 +6,7 @@ public abstract class Device {
     private String model;
     private int priceInUsd;
     private double weightInKg;
-    public Type typeOfDevice;
+    private Type typeOfDevice;
 
     public Device(final String brand, final String model, final int priceInUsd,
 	    	final double weightInKg) {

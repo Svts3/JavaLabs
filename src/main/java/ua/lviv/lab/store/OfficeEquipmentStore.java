@@ -18,73 +18,72 @@ public class OfficeEquipmentStore {
     }
 
     public OfficeEquipmentStore(List<Device> devices) {
-	this.devices = devices;
+        this.devices = devices;
     }
 
     public void addDevice(Device device) {
-	devices.add(device);
+        devices.add(device);
     }
 
     public List<Device> getDevices() {
-	return devices;
+        return devices;
     }
 
-    public List<Device> findDevicesByTypeInRange(final Type type, final int minPrice,
-	    					final int maxPrice)
-	    throws Exception {
-	if (minPrice > maxPrice) {
-	    throw new IllegalArgumentException("Error! Minimal price is bigger than maximal price");
-	}
-	if (type == null) {
-	    throw new IllegalArgumentException("Error! The type is null");
-	}
-	foundedDevices = devices.stream().filter(device -> device.getTypeOfDevice().equals(type))
-		.filter(device -> device.getPriceInUsd() >= minPrice)
-		.filter(device -> device.getPriceInUsd() <= maxPrice)
-		.collect(Collectors.toList());
-	System.out.println("Founded devices:\n");
-	for (Device device : foundedDevices) {
-	    System.out.println(device);
-	}
+    public List<Device> findDevicesByTypeInRange(Type type, int minPrice, int maxPrice)
+            throws Exception {
+        if (minPrice > maxPrice) {
+            throw new IllegalArgumentException("Error! Minimal price is bigger than maximal price");
+        }
+        if (type == null) {
+            throw new IllegalArgumentException("Error! The type is null");
+        }
+        foundedDevices = devices.stream().filter(device -> device.getTypeOfDevice().equals(type))
+                .filter(device -> device.getPriceInUsd() >= minPrice)
+                .filter(device -> device.getPriceInUsd() <= maxPrice)
+                .collect(Collectors.toList());
+        System.out.println("Founded devices:\n");
+        for (Device device : foundedDevices) {
+           System.out.println(device);
+        }
 
-	return foundedDevices;
+        return foundedDevices;
+     }
+
+    public List<Device> sortFoundedDevicesByPrice(boolean reversed) {
+        if (reversed) {
+           foundedDevices = foundedDevices.stream()
+                    .sorted(Comparator.comparing(Device::getPriceInUsd).reversed())
+                    .collect(Collectors.toList());
+           System.out.println("Sorted by price(Reversed):\n");
+        } else {
+           foundedDevices = foundedDevices.stream()
+                    .sorted(Comparator.comparing(Device::getPriceInUsd))
+                    .collect(Collectors.toList());
+            System.out.println("Sorted by price: \n");
+        }
+        for (Device device : foundedDevices) {
+            System.out.println(device);
+        }
+
+        return foundedDevices;
     }
 
-    public List<Device> sortFoundedDevicesByPrice(final boolean reversed) {
-	if (reversed) {
-	    foundedDevices = foundedDevices.stream()
-		    .sorted(Comparator.comparing(Device::getPriceInUsd).reversed())
-		    .collect(Collectors.toList());
-	    System.out.println("Sorted by price(Reversed):\n");
-	} else {
-	    foundedDevices = foundedDevices.stream()
-		    .sorted(Comparator.comparing(Device::getPriceInUsd))
-		    .collect(Collectors.toList());
-	    System.out.println("Sorted by price: \n");
-	}
-	for (Device device : foundedDevices) {
-	    System.out.println(device);
-	}
-
-	return foundedDevices;
-    }
-
-    public List<Device> sortFoundedDevicesByWeigth(final boolean reversed) {
-	if (reversed) {
-	    foundedDevices = foundedDevices.stream()
-		    .sorted(Comparator.comparing(Device::getWeightInKg).reversed())
-		    .collect(Collectors.toList());
-	    System.out.println("Sorted by price(Reversed):\n");
-	} else {
-	    foundedDevices = foundedDevices.stream()
-		    .sorted(Comparator.comparing(Device::getWeightInKg))
-		    .collect(Collectors.toList());
-	    System.out.println("Sorted by price:\n");
-	}
-	for (Device device : foundedDevices) {
-	    System.out.println(device);
-	}
-	return foundedDevices;
+    public List<Device> sortFoundedDevicesByWeigth(boolean reversed) {
+        if (reversed) {
+            foundedDevices = foundedDevices.stream()
+                    .sorted(Comparator.comparing(Device::getWeightInKg).reversed())
+                    .collect(Collectors.toList());
+            System.out.println("Sorted by price(Reversed):\n");
+        } else {
+            foundedDevices = foundedDevices.stream()
+                    .sorted(Comparator.comparing(Device::getWeightInKg))
+                    .collect(Collectors.toList());
+            System.out.println("Sorted by price:\n");
+        }
+        for (Device device : foundedDevices) {
+            System.out.println(device);
+        }
+        return foundedDevices;
     }
 
 }

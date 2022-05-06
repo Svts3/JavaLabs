@@ -1,0 +1,12 @@
+Brand;Model;Price;Weight;Type;CPU;GPU;RAM;Memory;Battery Capacity;Screen Diagonal;
+HP;Omen;1400;2,4;LAPTOP;R5 5600;Rtx 3050;16;512;72,0;17,0
+Asus;VivoBook;1700;3,0;LAPTOP;R5 5600;Rtx 3050;16;512;72,0;17,0
+Dell;XPS;1650;2,7;LAPTOP;R5 5600;Rtx 3050;16;512;72,0;17,0
+Brand;Model;Price;Weight;Type;CPU;GPU;RAM;Memory;
+Asus;S-500;1500;3,4;PC;R5 5600x;RTX 3060;16;1000;
+Brand;Model;Price;Weight;Type;Dimension;
+Casio;212;10;0,4;CALCULATOR;12;
+Brand;Model;Price;Weight;Type;CPU;Video core;RAM;Memory;Battery Capacity;Screen Diagonal;Number of Front Cameras;
+Apple;Iphone 13;1700;0,7;SMARTPHONE;A15 Bionic;A15 Bionic;8;512;4000;8,6;3
+Brand;Model;Price;Weight;Type;Print Technology;Number of colors
+Canon;xm-12;250;2,5;PRINTER;Lazer;3

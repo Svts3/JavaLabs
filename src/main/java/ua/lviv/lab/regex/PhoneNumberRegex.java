@@ -14,12 +14,12 @@ public class PhoneNumberRegex {
         if (matcher.matches()) {
             final int firstRegexGroupIndex = 1;
             final int secondRegexGroupIndex = 2;
-            final int thirdRegexroupIndex = 3;
+            final int thirdRegexGroupIndex = 3;
             builder.append(matcher.group(firstRegexGroupIndex) == null ? ""
                     : matcher.group(firstRegexGroupIndex));
             builder.append(new StringBuilder(matcher.group(secondRegexGroupIndex)).reverse());
-            builder.append(matcher.group(thirdRegexroupIndex) == null ? ""
-                    : matcher.group(thirdRegexroupIndex));
+            builder.append(matcher.group(thirdRegexGroupIndex) == null ? ""
+                    : matcher.group(thirdRegexGroupIndex));
 
         } else {
             throw new IllegalArgumentException("The text doesn't follow the regular expression");

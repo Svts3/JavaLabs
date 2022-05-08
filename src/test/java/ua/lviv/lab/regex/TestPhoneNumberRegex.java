@@ -20,6 +20,8 @@ class TestPhoneNumberRegex {
         text = scanner.nextLine();
         assertEquals("21-42-542, Tom", phoneNumberRegex.findAndChangeNumberOnReversed(text));
         text = scanner.nextLine();
+        assertEquals("Number is 21-42-542, Tom", phoneNumberRegex.findAndChangeNumberOnReversed(text));
+        text = scanner.nextLine();
         assertEquals("21-42-542 Tom", phoneNumberRegex.findAndChangeNumberOnReversed(text));
         text = scanner.nextLine();
         assertEquals("My number is 2142542", phoneNumberRegex.findAndChangeNumberOnReversed(text));

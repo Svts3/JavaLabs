@@ -18,19 +18,17 @@ class TestPhoneNumberRegex {
         String text = scanner.nextLine();
         assertEquals("Number is 21-42-542", phoneNumberRegex.findAndChangeNumberOnReversed(text));
         text = scanner.nextLine();
-        assertEquals("21-42-542, Tom", phoneNumberRegex.findAndChangeNumberOnReversed(text));
-        text = scanner.nextLine();
         assertEquals("Number is 21-42-542, Tom", phoneNumberRegex.findAndChangeNumberOnReversed(text));
         text = scanner.nextLine();
         assertEquals("21-42-542 Tom", phoneNumberRegex.findAndChangeNumberOnReversed(text));
         text = scanner.nextLine();
-        assertEquals("My number is 2142542", phoneNumberRegex.findAndChangeNumberOnReversed(text));
+        assertEquals("Number is 2142542", phoneNumberRegex.findAndChangeNumberOnReversed(text));
         text = scanner.nextLine();
         assertEquals("2-14-25-42", phoneNumberRegex.findAndChangeNumberOnReversed(text));
-        String text2 = scanner.nextLine();
-        assertThrows(IllegalArgumentException.class, () -> {
-            phoneNumberRegex.findAndChangeNumberOnReversed(text2);
-        });
+        text = scanner.nextLine();
+        assertEquals("Numbers: 21-42-542, 2142542 Smt 2-14-25-42", phoneNumberRegex.findAndChangeNumberOnReversed(text));
+        text = scanner.nextLine();
+        assertEquals("", phoneNumberRegex.findAndChangeNumberOnReversed(text));
 
     }
 

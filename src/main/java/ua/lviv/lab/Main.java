@@ -7,6 +7,7 @@ import ua.lviv.lab.devices.Laptop;
 import ua.lviv.lab.devices.PC;
 import ua.lviv.lab.devices.Smartphone;
 import ua.lviv.lab.devices.Type;
+import ua.lviv.lab.regex.PhoneNumberRegex;
 import ua.lviv.lab.store.OfficeEquipmentStore;
 
 public class Main {
@@ -41,6 +42,8 @@ public class Main {
 	devices = store.sortFoundedDevicesByPrice(true);
 	devices = store.sortFoundedDevicesByWeigth(false);
 	devices = store.sortFoundedDevicesByWeigth(true);
+	
+	
 
     }
 

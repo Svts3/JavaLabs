@@ -1,5 +1,17 @@
 package ua.lviv.lab.devices;
 
+import javax.persistence.MappedSuperclass;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@NoArgsConstructor
+@Getter
+@Setter
+@MappedSuperclass
 public abstract class Device {
 
     private String brand;
@@ -20,7 +32,7 @@ public abstract class Device {
     @Override
     public String toString() {
         return String.format("Brand: %s, model: %s\n" + "Price: %d $, weight: %.1f Kg\n", brand,
-                             model, priceInUsd, weightInKg);
+                model, priceInUsd, weightInKg);
     }
 
     public Type getTypeOfDevice() {
@@ -46,15 +58,14 @@ public abstract class Device {
     public double getWeightInKg() {
         return weightInKg;
     }
-
+    @JsonIgnore
     public String getHeaders() {
         return "Brand;Model;Price;Weight;Type;";
     }
-
     public String toCSV() {
 
         return String.format("%s;%s;%d;%.1f;%s;", this.brand, this.model, this.priceInUsd,
-                             this.weightInKg, this.typeOfDevice.name());
+                this.weightInKg, this.typeOfDevice.name());
     }
 
 }

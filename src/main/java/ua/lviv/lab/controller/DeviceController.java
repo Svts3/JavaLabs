@@ -2,8 +2,6 @@ package ua.lviv.lab.controller;
 
 import java.util.List;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -25,8 +23,13 @@ import ua.lviv.lab.service.DeviceService;
 @RequestMapping("/laptop")
 public class DeviceController {
 
-    @Autowired
+    
     public DeviceService service;
+    @Autowired
+    public DeviceController(DeviceService service) {
+        this.service = service;
+    }
+
     @GetMapping("/test")
     public Laptop test() {
         return new Laptop("Lenovo", "Legion", 0, 0, null, null, 0, 0, 0, 0);

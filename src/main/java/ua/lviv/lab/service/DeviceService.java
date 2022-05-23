@@ -12,8 +12,11 @@ import ua.lviv.lab.repository.DeviceRepository;
 @Service
 public class DeviceService {
 
-    @Autowired
     public DeviceRepository repository;
+    @Autowired
+    public DeviceService(DeviceRepository repository) {
+        this.repository = repository;
+    }
 
     public Laptop addDevice(Laptop Laptop) {
         return repository.save(Laptop);

@@ -12,8 +12,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import ua.lviv.lab.devices.Laptop;
@@ -38,7 +36,7 @@ public class DeviceController {
     }
     @GET
     @Path("/{id}")
-    public Laptop findDeviceById(@PathVariable int id) {
+    public Laptop findDeviceById(@PathParam("id") int id) {
         return service.findById(id);
     }
 
@@ -50,17 +48,17 @@ public class DeviceController {
 
     @POST
     @Path("/")
-    public Laptop addDevice(@RequestBody Laptop Laptop) {
+    public Laptop addDevice(Laptop Laptop) {
         return service.addDevice(Laptop);
     }
     @POST
     @Path("/laptops")
-    public List<Laptop> addDevices(@RequestBody List<Laptop> devices) {
+    public List<Laptop> addDevices(List<Laptop> devices) {
         return service.addDevices(devices);
     }
     @PUT
     @Path("/{id}")
-    public Laptop updateDevice(@RequestBody Laptop Laptop, @PathParam("id") int id) {
+    public Laptop updateDevice(Laptop Laptop, @PathParam("id") int id) {
         return service.updateDevice(Laptop, id);
     }
     @DELETE

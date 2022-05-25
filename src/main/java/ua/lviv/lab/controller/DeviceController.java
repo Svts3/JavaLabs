@@ -2,25 +2,27 @@ package ua.lviv.lab.controller;
 
 import java.util.List;
 
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import ua.lviv.lab.devices.Laptop;
 import ua.lviv.lab.service.DeviceService;
 
 @RestController
-@ComponentScan("ua.lviv.lab")
-@RequestMapping("/laptop")
+@Consumes("application/json")
+@Produces("application/json")
+@Path("/laptop")
 public class DeviceController {
 
     
@@ -29,40 +31,41 @@ public class DeviceController {
     public DeviceController(DeviceService service) {
         this.service = service;
     }
-
-    @GetMapping("/test")
+    @GET
+    @Path("/test")
     public Laptop test() {
         return new Laptop("Lenovo", "Legion", 0, 0, null, null, 0, 0, 0, 0);
     }
-
-    @GetMapping("/{id}")
+    @GET
+    @Path("/{id}")
     public Laptop findDeviceById(@PathVariable int id) {
         return service.findById(id);
     }
 
-    @GetMapping("/")
+    @GET
+    @Path("/")
     public List<Laptop> findAllDevices() {
         return service.findAllDevices();
     }
 
-    @PostMapping("/")
-    @ResponseBody
+    @POST
+    @Path("/")
     public Laptop addDevice(@RequestBody Laptop Laptop) {
         return service.addDevice(Laptop);
     }
-
-    @PostMapping("/laptops")
+    @POST
+    @Path("/laptops")
     public List<Laptop> addDevices(@RequestBody List<Laptop> devices) {
         return service.addDevices(devices);
     }
-
-    @PutMapping("/{id}")
-    public Laptop updateDevice(@RequestBody Laptop Laptop, @PathVariable int id) {
+    @PUT
+    @Path("/{id}")
+    public Laptop updateDevice(@RequestBody Laptop Laptop, @PathParam("id") int id) {
         return service.updateDevice(Laptop, id);
     }
-
-    @DeleteMapping("/{id}")
-    public String deleteDevice(@PathVariable int id) {
+    @DELETE
+    @Path("/{id}")
+    public String deleteDevice(@PathParam("id") int id) {
         service.removeDevice(id);
         return "Laptop with id " + id + " was removed!";
     }

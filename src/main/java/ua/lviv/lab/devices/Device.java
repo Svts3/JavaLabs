@@ -1,5 +1,7 @@
 package ua.lviv.lab.devices;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.MappedSuperclass;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -18,6 +20,7 @@ public abstract class Device {
     private String model;
     private int priceInUsd;
     private double weightInKg;
+    @Enumerated(EnumType.STRING)
     private Type typeOfDevice;
 
     public Device(String brand, String model, int priceInUsd, double weightInKg) {
@@ -58,10 +61,12 @@ public abstract class Device {
     public double getWeightInKg() {
         return weightInKg;
     }
+
     @JsonIgnore
     public String getHeaders() {
         return "Brand;Model;Price;Weight;Type;";
     }
+
     public String toCSV() {
 
         return String.format("%s;%s;%d;%.1f;%s;", this.brand, this.model, this.priceInUsd,

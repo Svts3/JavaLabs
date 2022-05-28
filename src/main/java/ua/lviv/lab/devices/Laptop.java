@@ -31,7 +31,6 @@ public class Laptop extends PC {
         this.batteryCapacityInW = batteryCapacityInMa;
         this.screenDiagonal = screenDiagonal;
     }
-
     @Override
     public String toString() {
         return super.toString()

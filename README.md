@@ -1,4 +1,5 @@
 # JavaLabs
+
 # Lab 8
 - create a REST service for one of the classes created in laboratory work 2, which implements CRUD-operations (Get / Post / Put / Delete) on the resource and the return operation of all objects.
 - The get operation must use the id in the url: / aligator / 20
@@ -14,3 +15,4 @@
 - The code should be checked by plug-ins and bug fixes
 - The code must contain a separate class * Controller, * Service and * Repository interface
 - Configuring access to the database must be implemented through a property file
+

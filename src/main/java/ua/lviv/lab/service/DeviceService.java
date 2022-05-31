@@ -28,8 +28,9 @@ public class DeviceService {
         return repository.save(laptop);
     }
 
-    public List<Laptop> addDevices(List<Laptop> devices) {
-        return repository.saveAll(devices);
+    public Map<Integer, Laptop> addDevices(List<Laptop> devices) {
+        return repository.saveAll(devices).stream()
+                .collect(Collectors.toMap(Laptop::getId, device -> device));
     }
 
     public ResponseEntity<Object> removeDevice(int id) {
@@ -52,20 +53,20 @@ public class DeviceService {
                     new DeviceNotFoundException("Device with id " + id + " wasn't found!")
                             .getMessage(), HttpStatus.NOT_FOUND);
         } else {
-            Laptop tempLaptop = repository.findById(id).get();
-            tempLaptop.setId(id);
-            tempLaptop.setBrand(laptop.getBrand());
-            tempLaptop.setModel(laptop.getModel());
-            tempLaptop.setPriceInUsd(laptop.getPriceInUsd());
-            tempLaptop.setScreenDiagonal(laptop.getScreenDiagonal());
-            tempLaptop.setBatteryCapacityInW(laptop.getBatteryCapacityInW());
-            tempLaptop.setTypeOfDevice(laptop.getTypeOfDevice());
-            tempLaptop.setWeightInKg(laptop.getWeightInKg());
-            tempLaptop.setCpu(laptop.getCpu());
-            tempLaptop.setGpu(laptop.getGpu());
-            tempLaptop.setRam(laptop.getRam());
-            tempLaptop.setMemoryInGb(laptop.getMemoryInGb());
-            return new ResponseEntity<Object>(repository.save(tempLaptop), HttpStatus.OK);
+            Laptop laptop2 = repository.findById(id).get();
+            laptop2.setId(id);
+            laptop2.setBrand(laptop.getBrand());
+            laptop2.setModel(laptop.getModel());
+            laptop2.setPriceInUsd(laptop.getPriceInUsd());
+            laptop2.setScreenDiagonal(laptop.getScreenDiagonal());
+            laptop2.setBatteryCapacityInW(laptop.getBatteryCapacityInW());
+            laptop2.setTypeOfDevice(laptop.getTypeOfDevice());
+            laptop2.setWeightInKg(laptop.getWeightInKg());
+            laptop2.setCpu(laptop.getCpu());
+            laptop2.setGpu(laptop.getGpu());
+            laptop2.setRam(laptop.getRam());
+            laptop2.setMemoryInGb(laptop.getMemoryInGb());
+            return new ResponseEntity<Object>(repository.save(laptop2), HttpStatus.OK);
 
         }
     }

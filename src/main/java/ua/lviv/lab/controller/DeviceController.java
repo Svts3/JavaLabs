@@ -52,8 +52,8 @@ public class DeviceController {
     }
 
     @POST
-    @Path("/laptops")
-    public List<Laptop> addDevices(List<Laptop> devices) {
+    @Path("/addDevices")
+    public Map<Integer, Laptop> addDevices(List<Laptop> devices) {
         return service.addDevices(devices);
     }
 

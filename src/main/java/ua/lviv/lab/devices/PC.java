@@ -34,11 +34,9 @@ public class PC extends Device {
         return super.toString() + String.format("CPU: %s, GPU: %s\n" + "RAM: %d, Memory: %d Gb\n",
                                                 cpu, gpu, ram, memoryInGb);
     }
-    @Transient
     public String getHeaders() {
         return super.getHeaders() + "CPU;GPU;RAM;Memory;";
     }
-    @Transient
     public String toCSV() {
         return super.toCSV() + this.cpu + ";" + this.gpu + ";" + this.ram + ";" + memoryInGb + ";";
     }

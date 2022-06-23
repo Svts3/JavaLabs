@@ -18,7 +18,6 @@ public class PhoneNumberRegex {
             listWithReversedNumbers.add(matcher.group());
             listWithoutReversedNumbers.add(matcher.group());
         }
-
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < listWithReversedNumbers.size(); i++) {
 

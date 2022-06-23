@@ -1,5 +1,5 @@
 # JavaLabs
-# JavaLabs
+
 # Lab2
 Office equipment store.
 - Implement the hierarchy of equipment present in the store.
